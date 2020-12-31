@@ -63,6 +63,8 @@
   <form action="/birds">
     <input type="checkbox" name="agree_tos" id="agree">
     <label for="agree">I agree to everything</label>
+
+    <!-- Size -->
     <p>
       <label for="xs">XS:</label>
       <input type="radio" name="size" id="xs" value="xs">
@@ -71,6 +73,8 @@
       <label for="m">M:</label>
       <input type="radio" name="size" id="m" value="m">
     </p>
+
+    <!-- Select Entree -->
     <p>
       <label for="meal">Please Select an Entree</label>
       <select name="meal" id="meal">
@@ -79,6 +83,20 @@
         <option value="steak">Steak</option>
       </select>
     </p>
+
+    <!-- Range Selection -->
+    <p>
+      <label for="cheese">Amount of Cheese:</label>
+      <input type="range" name="cheese_level" id="cheese" min="1" max="100" value="75">
+    </p>
+
+    <!-- Paragraph -->
+    <p>
+      <label for="requests">Any Special Requests?</label>
+      <textarea name="requests" id="requests" cols="40" rows="5" placeholder="Type something here"></textarea>
+    </p>
+
+
     <button>Submit</button>
   </form>
 
