@@ -12,8 +12,12 @@ p {
 }
 
 button {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   color: white;
   width: 150px; 
   height: 40px;
+}
+
+a {
+  text-decoration: none;
 }
