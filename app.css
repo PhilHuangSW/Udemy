@@ -1,0 +1,19 @@
+h1 {
+  color: red;
+}
+
+div {
+  font-size: 20px;
+}
+
+p {
+  color: teal;
+  font-size: 30px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  width: 150px; 
+  height: 40px;
+}
