@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Race Registration Form</title>
+</head>
+
+<body>
+  <a href="chickens.html">Back</a>
+  <h1>Race Registration!</h1>
+  <form action="/race_registration">
+    <div>
+      <!-- First Name -->
+      <label for="first">First Name</label>
+      <input type="text" name="first" id="first" placeholder="First Name" required>
+
+      <!-- Last Name -->
+      <label for="last">Last Name</label>
+      <input type="text" name="last" id="last" placeholder="Last Name" required>
+    </div>
+
+    <p>
+      Select a Race:
+    </p>
+
+    <!-- Type of Race -->
+    <div>
+      <!-- Fun Run 5k -->
+      <label for="funrun">Fun Run 5k</label>
+      <input type="radio" name="race" id="funrun" value="funrun">
+    </div>
+
+    <!-- Half Marathon -->
+    <div>
+      <label for="half">Half Marathon</label>
+      <input type="radio" name="race" id="half" value="half">
+    </div>
+
+    <!-- Full Marathon -->
+    <div>
+      <label for="full">Full Marathon</label>
+      <input type="radio" name="race" id="full" value="full">
+    </div>
+
+    <!-- Email and Password Validation -->
+    <div>
+      <!-- Email -->
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password" required>
+    </div>
+
+    <!-- Age Group -->
+    <div>
+      <label for="division">Select Age Group</label>
+      <select name="division" id="division">
+        <option value="youth">under 18</option>
+        <option value="adolescent">18-30</option>
+        <option value="adult">31-50</option>
+        <option value="senior">over 50</option>
+      </select>
+    </div>
+
+    <!-- Button -->
+    <button>Register</button>
+
+  </form>
+
+</body>
+
+</html>
