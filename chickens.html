@@ -5,20 +5,77 @@
   <title>
     Chicken - Phiripedia
   </title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-    crossorigin="anonymous"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-    crossorigin="anonymous"></script>
+<body style="padding-top:70px;">
+  <div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+      <a href="#" class="navbar-brand">Navbar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
+          <path
+            d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
+        </svg></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#expandme">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="expandme">
+        <div class="navbar-nav">
+          <a href="https://www.google.com" class="nav-item nav-link">Google</a>
+          <a href="about.html" class="nav-item nav-link">About Me</a>
+          <a href="heaviest_birds.html" class="nav-item nav-link">Heaviest Birds</a>
+          <a href="forms.html" class="nav-item nav-link">Forms</a>
+          <a href="race_registration.html" class="nav-item nav-link">Race Registration Form</a>
+          <a href="button.html" class="nav-item nav-link">Cool Button</a>
+          <a href="photos.html" class="nav-item nav-link">Photo Portfolio</a>
+          <a href="flexbox.html" class="nav-item nav-link">Flexbox</a>
+          <a href="media_query.html" class="nav-item nav-link">Media Query</a>
+          <a href="price_tiers.html" class="nav-item nav-link">Price Tiers</a>
+          <a href="bootstrap_buttons.html" class="nav-item nav-link">Bootstrap Buttons</a>
+          <a href="bootstrap_forms.html" class="nav-item nav-link">Bootstrap Forms</a>
+          <a href="museum_of_candy.html" class="nav-item nav-link">Museum of Candy</a>
+        </div>
+
+        <!-- <form class="form-inline ml-auto">
+          <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
   <div class="container-fluid">
     <h1>Chickens</h1>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </div>
+    </div>
 
     <hr>
 
@@ -36,6 +93,7 @@
       <a href="media_query.html">Media Query</a><br>
       <a href="price_tiers.html">Price Tiers</a><br>
       <a href="bootstrap_buttons.html">Bootstrap Buttons</a><br>
+      <a href="bootstrap_forms.html">Bootstrap Forms</a><br>
 
     </div>
 
@@ -89,6 +147,16 @@
       alt="Baby White Chick">
 
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
