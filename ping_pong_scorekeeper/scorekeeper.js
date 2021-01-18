@@ -37,8 +37,8 @@ scoreTo.addEventListener('change', function () {
   p2.innerText = playerTwoPoints;
   pOnePoint.disabled = false;
   pTwoPoint.disabled = false;
-  p1.style.color = "black";
-  p2.style.color = "black";
+  p1.classList.remove('has-text-success', 'has-text-danger')
+  p2.classList.remove('has-text-success', 'has-text-danger')
 })
 
 pOnePoint.addEventListener('click', function () {
@@ -47,8 +47,8 @@ pOnePoint.addEventListener('click', function () {
   p1.innerText = playerOnePoints;
   let win = winningPoint(scoreTo.value);
   if (playerOnePoints >= win) {
-    p1.style.color = "green";
-    p2.style.color = "red";
+    p2.classList.add('has-text-danger')
+    p1.classList.add('has-text-success')
     pOnePoint.disabled = true;
     pTwoPoint.disabled = true;
   }
@@ -60,8 +60,8 @@ pTwoPoint.addEventListener('click', function () {
   p2.innerText = playerTwoPoints;
   let win = winningPoint(scoreTo.value);
   if (playerTwoPoints >= win) {
-    p2.style.color = "green";
-    p1.style.color = "red";
+    p1.classList.add('has-text-danger')
+    p2.classList.add('has-text-success')
     pOnePoint.disabled = true;
     pTwoPoint.disabled = true;
   }
@@ -74,7 +74,7 @@ reset.addEventListener('click', function () {
   p2.innerText = playerTwoPoints;
   pOnePoint.disabled = false;
   pTwoPoint.disabled = false;
-  p1.style.color = "black";
-  p2.style.color = "black";
+  p1.classList.remove('has-text-success', 'has-text-danger')
+  p2.classList.remove('has-text-success', 'has-text-danger')
 })
 
