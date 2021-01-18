@@ -5,37 +5,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scorekeeper</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 
 <body>
-  <img
-    src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cGluZyUyMHBvbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60"
-    alt="ping pong paddle" style="height: 250px; width: 300px;">
-  <h1>Play a game of ping pong!</h1>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-2by1">
+                <img
+                  src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cGluZyUyMHBvbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60"
+                  alt="ping pong paddle">
+              </figure>
+            </div>
 
-  <section id="score-container">
-    <h3 id="score">
-      <span id="p1">0</span> to <span id="p2">0</span>
-    </h3>
-    <p>Use the buttons below to keep track of the score.</p>
+            <header class="card-header">
+              <p class="card-header-title">
+                Ping Pong Score Keeper
+              </p>
+            </header>
 
-    <b>Playing to:</b>
-    <select name="scoreTo" id="scoreTo">
-      <option value="to5">5</option>
-      <option value="to6">6</option>
-      <option value="to7">7</option>
-      <option value="to8">8</option>
-    </select>
+            <div class="card-content">
+              <div class="content">
+                <h1 class="title is-1" id="score">
+                  <span id="p1">0</span> to <span id="p2">0</span>
+                  <p class="subtitle">Use the buttons below to keep score</p>
 
-    <div>
-      <button id="pOnePoint">+1 to Player One</button>
-      <button id="pTwoPoint">+1 to Player Two</button>
-      <button id="reset">Reset</button>
+                  <label for="scoreTo" class="label is-large is-inline">
+                    Playing To
+                    <div class="select is-rounded">
+                      <select name="scoreTo" id="scoreTo">
+                        <option value="to5">5</option>
+                        <option value="to6">6</option>
+                        <option value="to7">7</option>
+                        <option value="to8">8</option>
+                      </select>
+                    </div>
+                  </label>
+                </h1>
+              </div>
+            </div>
+
+            <footer class="card-footer">
+              <button id="pOnePoint" class="is-primary button card-footer-item">+1 Player One</button>
+              <button id="pTwoPoint" class="is-info button card-footer-item">+1 Player Two</button>
+              <button id="reset" class="is-danger button card-footer-item">Reset</button>
+            </footer>
+
+          </div>
+        </div>
+      </div>
     </div>
-
-
   </section>
-
 
   <script src="scorekeeper.js"></script>
 </body>
