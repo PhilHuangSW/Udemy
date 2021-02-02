@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head.ejs') %>
+  <%- include('partials/navbar.ejs') %>
+
+    <body>
+      <div class="container">
+        <h1>
+          Here is your random number: <%= rand %>
+        </h1>
+        <h1>
+          This random number is:
+          <% if (rand%2===0) { %>
+            Even!
+            <% } else { %>
+              Odd!
+              <% } %>
+        </h1>
+
+      </div>
+
+
+    </body>
+
+</html>
