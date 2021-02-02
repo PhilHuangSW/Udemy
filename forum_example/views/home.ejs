@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to the Forums!</title>
+</head>
+
+<body>
+  <h1>Welcome to the Forums!</h1>
+  <h2>Posts:</h2>
+  <p>
+  <ul>
+    <% for(let c of posts) { %>
+      <li>
+        <%= c.comment %> -
+          <b>
+            <%= c.author %>
+          </b>
+      </li>
+      <% } %>
+  </ul>
+  </p>
+</body>
+
+</html>
