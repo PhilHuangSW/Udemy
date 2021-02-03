@@ -1,1 +1,4 @@
 /export_example/node_modules
+/node_modules
+/mongoose_example/node_modules
+/forum_example/node_modules
