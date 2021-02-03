@@ -30,57 +30,63 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-app.get('/', (req, res) => {
+// GET REQUEST FOR INDEX/HOMEPAGE OF COMMENTS
+app.get('/comments', (req, res) => {
   // const { author, comment } = req.body;
   // res.render('home', { author, comment });
-  res.render('home', { posts });
+  res.render('comments/index', { posts });
 })
 
-app.get('/new', (req, res) => {
-  res.render('new');
+// GET REQUEST FOR NEW FORM FOR COMMENTS
+app.get('/comments/new', (req, res) => {
+  res.render('comments/new');
 })
 
-app.post('/home', (req, res) => {
+// POST REQUEST FOR CREATING NEW COMMENTS
+app.post('/comments', (req, res) => {
   console.log(req.body);
   const { author, comment } = req.body;
   posts.push({ author, comment, id: newID() })
-  res.redirect('/')
+  res.redirect('comments')
 })
 
-app.get('/:id', (req, res) => {
+// GET REQUEST FOR SPECIFIC COMMENTS
+app.get('/comments/:id', (req, res) => {
   const { id } = req.params;
   const comment = posts.find(c => c.id === id);
   console.log(comment)
   if (comment) {
-    res.render('show', { comment })
+    res.render('comments/show', { comment })
   } else {
-    res.render('/');
+    res.render('comments');
   }
 })
 
-app.get('/:id/edit', (req, res) => {
+// GET REQUEST FOR EDITING SPECIFIC COMMENTS
+app.get('/comments/:id/edit', (req, res) => {
   const { id } = req.params;
   const comment = posts.find(c => c.id === id);
   if (comment) {
-    res.render('edit', { comment })
+    res.render('comments/edit', { comment })
   } else {
-    res.render('/')
+    res.render('comments')
   }
 })
 
-app.patch('/:id', (req, res) => {
+// PATCH REQUEST FOR EDITING SPECIFIC COMMENTS
+app.patch('/comments/:id', (req, res) => {
   const { id } = req.params;
   const comment = posts.find(c => c.id === id);
   const updatedComment = req.body.comment;
   comment.comment = updatedComment
-  res.redirect('/')
+  res.redirect('/comments')
   // res.send('hi!')
 })
 
-app.delete('/:id', (req, res) => {
+app.delete('/comments/:id', (req, res) => {
   const { id } = req.params;
   posts = posts.filter(c => c.id !== id);
-  res.redirect('/')
+  res.redirect('/comments')
 })
 
 app.listen(3000, () => {

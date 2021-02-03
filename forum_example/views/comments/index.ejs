@@ -13,20 +13,20 @@
   <p>
   <ul>
     <% for(let c of posts) { %>
-      <a href="/<%=c.id %>">
+      <a href="/comments/<%=c.id %>">
         <li>
           <%= c.comment %>
       </a> -
       <b>
         <%= c.author %>
-      </b> <a href="/<%= c.id %>/edit">Edit </a>
+      </b> <a href="/comments/<%= c.id %>/edit">Edit </a>
       </li>
       <% } %>
   </ul>
   </p>
 
   <section>
-    <a href="/new">New Comment</a>
+    <a href="/comments/new">New Comment</a>
   </section>
 </body>
 
