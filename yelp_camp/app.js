@@ -50,7 +50,7 @@ app.post('/campgrounds', async (req, res) => {
 app.get('/campgrounds/:id', async (req, res) => {
   const { id } = req.params;
   const campground = await Campground.findById(id);
-  res.render('campgrounds/show', { campground })
+  res.render('campgrounds/show', { campground });
 })
 
 app.get('/campgrounds/:id/edit', async (req, res) => {
@@ -61,14 +61,14 @@ app.get('/campgrounds/:id/edit', async (req, res) => {
 
 app.put('/campgrounds/:id', async (req, res) => {
   const { id } = req.params;
-  const { title, location } = req.body
   // console.log(title)
   // console.log(location)
-  const campground = await Campground.findByIdAndUpdate(id, { title: title, location: location }, { new: true });
+  console.log(req.body);
+  const campground = await Campground.findByIdAndUpdate(id, req.body.campground, { new: true });
   // campground.title = title;
   // campground.location = location;
   // await campground.save()
-  res.redirect(`/campgrounds/${campground._id}`);
+  res.redirect(`/campgrounds/${campground.id}`);
 })
 
 app.delete('/campgrounds/:id', async (req, res) => {
