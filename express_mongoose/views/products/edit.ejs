@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product</title>
+</head>
+
+<body>
+  <h1>Edit a Product</h1>
+  <form action="/products/<%= product.id %>/?_method=PUT" method="POST">
+    <section>
+      <label for="name">
+        Product Name
+      </label>
+      <input type="text" id="name" name="name" value="<%= product.name %>">
+    </section>
+
+    <section>
+      <label for="price">
+        Price
+      </label>
+      <input type="number" min="0" step="0.01" id="price" name="price" value="<%= product.price %>">
+    </section>
+
+    <section>
+      <label for="category">Select Category</label>
+      <select name="category" id="category">
+        <% for(let category of categories) { %>
+          <option value="<%= category %>" <% if (product.category===category) { %>
+            selected
+            <% } %>>
+              <%= category %>
+          </option>
+          <% } %>
+
+            <!-- <option value="fruit" <% if (product.category==='fruit' ) { %>
+          selected
+          <% } %>>Fruit
+        </option>
+        <option value="vegetable" <% if (product.category==='vegetable' ) { %>
+          selected
+          <% } %>>Vegetable
+        </option>
+        <option value="dairy" <% if (product.category==='dairy' ) { %>
+          selected
+          <% } %>>Dairy
+        </option> -->
+      </select>
+    </section>
+
+    <section>
+      <button>Submit</button>
+    </section>
+
+  </form>
+
+  <form action="/products/<%= product.id %>/?_method=DELETE"
+    onSubmit="return confirm('Are you sure you want to delete <%= product.name %>?" method="POST">
+    <button>
+      Delete Product
+    </button>
+  </form>
+
+  <section>
+    <a href="/products/<%= product.id %> ">Cancel</a><br>
+    <a href="/products">All Products</a>
+  </section>
+
+
+</body>
+
+</html>
