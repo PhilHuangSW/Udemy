@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Product = require('./models/product.js');
 const methodOverride = require('method-override');
 const categories = ['fruit', 'vegetable', 'dairy'];
+const AppError = require('./AppError');
+// import { AppError } from './AppError'
 
 const app = express();
 
@@ -33,8 +35,10 @@ app.get('/products', async (req, res) => {
   }
 })
 
-app.get('/products/new', async (req, res) => {
-  res.render('products/new');
+app.get('/products/new', async (req, res, next) => {
+  // throw new AppError('Not Allowed', 123);
+  // return next(new AppError(`Something happened 😭`, 404));
+  res.render('products/new', { categories });
 })
 
 app.post('/products', async (req, res) => {
@@ -80,6 +84,11 @@ app.delete('/products/:id', async (req, res) => {
   const { id } = req.params;
   const product = await Product.findByIdAndDelete(id);
   res.redirect('/products');
+})
+
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Something went wrong" } = err;
+  res.status(status).send(message);
 })
 
 app.get('*', async (req, res) => {
