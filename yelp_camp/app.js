@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
-const Joi = require('Joi');
+const Joi = require('joi');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
   useNewUrlParser: true,
@@ -47,13 +47,14 @@ app.get('/campgrounds/new', (req, res) => {
 app.post('/campgrounds', catchAsync(async (req, res, next) => {
   const campgroundSchema = Joi.object({
     campground: Joi.object({
-      title: Joi.string().required,
-      price: Joi.number().required.min(0)
+      title: Joi.string().required(),
+      price: Joi.number().required().min(0)
     }).required()
   })
-  const result = campgroundSchema.validate(req.body)
-  if (result.error) {
-    throw new ExpressError(result.error.details, 401)
+  const { error } = campgroundSchema.validate(req.body)
+  if (error) {
+    const msg = error.details.map(el => el.message).join(',')
+    throw new ExpressError(msg, 400)
   }
   const campground = new Campground(req.body.campground);
   await campground.save();
@@ -95,7 +96,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-  const { status } = err;
+  const { status = 400 } = err;
   if (!err.message) err.message = "This is a default error message, I don't know what went wrong!"
   res.status(status).render('error', { err });
 })
@@ -103,5 +104,3 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log('Listening on port: 8080!')
 })
-
-hihihi
