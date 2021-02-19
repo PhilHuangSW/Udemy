@@ -41,14 +41,18 @@ app.get('/products/new', async (req, res, next) => {
   res.render('products/new', { categories });
 })
 
-app.post('/products', async (req, res) => {
-  const { name, price, category } = req.body;
-  const newProduct = new Product(req.body);
-  await newProduct.save();
-  // console.log(`name: ${name}`);
-  // console.log(`price: ${price}`);
-  // console.log(`category: ${category}`);
-  res.redirect('products');
+app.post('/products', async (req, res, next) => {
+  try {
+    const { name, price, category } = req.body;
+    const newProduct = new Product(req.body);
+    await newProduct.save();
+    // console.log(`name: ${name}`);
+    // console.log(`price: ${price}`);
+    // console.log(`category: ${category}`);
+    res.redirect('products');
+  } catch (e) {
+    next(e);
+  }
 })
 
 // app.get('/products/edit', async (req, res) => {
@@ -57,9 +61,13 @@ app.post('/products', async (req, res) => {
 //   res.send('editing');
 // })
 
-app.get('/products/:id', async (req, res) => {
+app.get('/products/:id', async (req, res, next) => {
   const { id } = req.params;
   const product = await Product.findById(id);
+  if (!product) {
+    console.log('........')
+    return next(new AppError('It does not work!', 404));
+  }
   res.render('products/show', { product });
 })
 
@@ -73,11 +81,15 @@ app.get('/products/:id/edit', async (req, res) => {
   }
 })
 
-app.put('/products/:id', async (req, res) => {
-  const { id } = req.params;
-  const { name, price, category } = req.body;
-  const product = await Product.findByIdAndUpdate(id, { name: name, price: price, category: category }, { runValidators: true, new: true });
-  res.redirect(`/products/${product.id}`);
+app.put('/products/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { name, price, category } = req.body;
+    const product = await Product.findByIdAndUpdate(id, { name: name, price: price, category: category }, { runValidators: true, new: true });
+    res.redirect(`/products/${product.id}`);
+  } catch (e) {
+    next(e)
+  }
 })
 
 app.delete('/products/:id', async (req, res) => {
