@@ -3,6 +3,7 @@ const app = express();
 const User = require('./models/user');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 mongoose.connect('mongodb://localhost:27017/authDemo', {
   useNewUrlParser: true,
@@ -17,6 +18,14 @@ mongoose.connect('mongodb://localhost:27017/authDemo', {
 })
 
 app.use(express.urlencoded({ extended: true }))
+app.use(session({ secret: 'notagoodsecret' }))
+
+const requireLogin = (req, res, next) => {
+  if (!req.session.user_id) {
+    return res.redirect('/login');
+  }
+  next();
+}
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -37,6 +46,7 @@ app.post('/register', async (req, res) => {
     password: hash
   })
   await user.save();
+  req.session.user_id = user._id;
   res.redirect('/')
 })
 
@@ -52,15 +62,25 @@ app.post('/login', async (req, res) => {
   }
   const validPassword = await bcrypt.compare(password, user.password)
   if (validPassword) {
-    res.send(`Welcome in ${username}!`);
+    req.session.user_id = user._id;
+    res.redirect('/secret');
   } else {
     res.send('Incorrect username or password');
   }
 })
 
+app.post('/logout', (req, res) => {
+  req.session.user_id = null;
+  req.session.destroy();
+  res.redirect('/login');
+})
 
-app.get('/secret', (req, res) => {
-  res.send('This is a secret! You cannot see me!');
+app.get('/secret', requireLogin, (req, res) => {
+  res.render('secret');
+})
+
+app.get('/topsecret', requireLogin, (req, res) => {
+  res.send('Top secret!');
 })
 
 app.listen(3000, () => {
