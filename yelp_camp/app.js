@@ -9,9 +9,13 @@ const { campgroundSchema, reviewSchema } = require('./schemas');
 const Review = require('./models/review')
 const session = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
-const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const campgroundRoutes = require('./routes/campgrounds');
+const reviewRoutes = require('./routes/reviews');
+const userRoutes = require('./routes/users');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
   useNewUrlParser: true,
@@ -50,14 +54,34 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+app.use(passport.initialize());
+// make sure that session is BEFORE passport.session
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+// storing users in sessions
+passport.serializeUser(User.serializeUser());
+// unstoring users in sessions
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
 })
 
-app.use('/campgrounds', campgrounds);
-app.use('/campgrounds/:id/reviews', reviews);
+app.get('/fakeUser', async (req, res) => {
+  const user = new User({
+    email: 'psh@gmail.com',
+    username: 'phil'
+  })
+  const newUser = await User.register(user, 'chickens');
+  res.send(newUser);
+})
+
+app.use('/', userRoutes);
+app.use('/campgrounds', campgroundRoutes);
+app.use('/campgrounds/:id/reviews', reviewRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
