@@ -19,20 +19,25 @@
           <li class="list-group-item text-muted">
             <%= campground.location %>
           </li>
+          <li class="list-group-item text">
+            Submitted by <%= campground.author.username %>
+          </li>
           <li class="list-group-item">$<%= campground.price %> / night</li>
         </ul>
 
         <!-- EDIT AND DELETE BUTTONS INSIDE CARD -->
-        <div class="card-body">
-          <a href="/campgrounds/<%= campground._id %>/edit" class="card-link btn btn-info">Edit</a>
-          <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="d-inline">
-            <button class="btn btn-danger">Delete</button>
-          </form>
-        </div>
+        <% if (currentUser && campground.author.equals(currentUser._id)) { %>
+          <div class="card-body">
+            <a href="/campgrounds/<%= campground._id %>/edit" class="card-link btn btn-info">Edit</a>
+            <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" class="d-inline">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+          <% } %>
 
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
+            <div class="card-footer text-muted">
+              2 days ago
+            </div>
 
       </div>
 
@@ -43,8 +48,9 @@
       <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
         <div class="mb-3">
           <label class="form-label" for="rating">Rating</label>
-          <input class="form-range" type="range" name="review[rating]" id="rating" min="1" max="5">
+          <input class="form-control-range" type="range" name="review[rating]" id="rating" min="1" max="5">
         </div>
+
         <div class="mb-3">
           <label class="form-label" for="body">Review</label>
           <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
