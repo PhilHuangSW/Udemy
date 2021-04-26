@@ -3,7 +3,9 @@
   <div class="row">
     <h1 class="text-center">New Campground</h1>
     <div class="col-6 offset-3">
-      <form action="/campgrounds" method="POST" novalidate class="validated-form">
+      <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+
+
         <!-- TITLE -->
         <div class="mb-3">
           <label class="form-label" for="title">Title</label>
@@ -12,6 +14,7 @@
             Looks good!
           </div>
         </div>
+
 
         <!-- LOCATION -->
         <div class="mb-3">
@@ -22,23 +25,6 @@
           </div>
         </div>
 
-        <!-- IMAGE URL -->
-        <div class="mb-3">
-          <label for="image" class="form-label">Image URL</label>
-          <input type="text" class="form-control" id="image" name="campground[image]" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-
-        <!-- DESCRIPTION -->
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea id="description" name="campground[description]" class="form-control" required></textarea>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
 
         <!-- PRICE -->
         <div class="mb-3">
@@ -52,6 +38,39 @@
             </div>
           </div>
         </div>
+
+
+        <!-- DESCRIPTION -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" name="campground[description]" class="form-control" required></textarea>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+
+
+        <!-- IMAGE URL -->
+        <div class="mb-3">
+          <label for="">Upload Images</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="images" name="images" multiple>
+            <label class="custom-file-label" for="images">Choose image(s)...</label>
+          </div>
+        </div>
+        <!-- <div class="mb-3">
+          <label class="form-label" for="images">Upload Image(s)</label>
+          <br>
+          <input type="file" name="images" id="images" multiple>
+        </div> -->
+        <!-- <div class="mb-3">
+          <label for="image" class="form-label">Image URL</label>
+          <input type="text" class="form-control" id="image" name="campground[image]" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div> -->
 
         <!-- BUTTON TO SUBMIT FORM -->
         <div class="mb-3">
