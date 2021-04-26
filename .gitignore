@@ -10,3 +10,5 @@
 /SessionsDemo/node_modules
 /AuthDemo/node_modules
 /BcryptDemo/node_modules
+/yelp_camp/.env
+/yelp_camp/package.json
